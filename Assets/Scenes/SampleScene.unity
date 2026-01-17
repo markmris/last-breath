@@ -666,7 +666,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 2
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -726,6 +726,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dae7dc156bce3f45a7d1c044ce74bb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  rigidBody: {fileID: 1881514010}
+  walkSpeed: 10
+  moveAction: {fileID: -3721397203859753266, guid: 2feb7e2300889dd409430bc9a9931f28, type: 3}
 --- !u!4 &1881514014 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7878350319992209165, guid: 59ca90cba51e8264889f13d46d19eb8b, type: 3}

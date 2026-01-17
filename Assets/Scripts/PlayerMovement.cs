@@ -3,52 +3,50 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Rigidbody2D rigidBody;
-    private SpriteRenderer animator;
-    private float walkSpeed = 10f;
-    private float jumpHeight = 12f;
+    public Rigidbody2D rigidBody;
+    public float walkSpeed;
+    public float jumpHeight;
+    public InputActionReference moveAction;
+    public InputActionReference jumpAction;
+    private Vector2 moveDirection;
+    private bool canJump;
 
-    private InputActionAsset InputActions;
-
-    private InputAction moveAction;
-    private InputAction jumpAction;
-
-    private Vector2 moveInput;
-    private Vector2 jumpInput;
-
-    private void OnEnable()
+    private void Update()
     {
-        InputActions.FindActionMap("Player").Enable();
-    }
-
-    private void OnDisable()
-    {
-        InputActions.FindActionMap("Player").Disable();
-    }
-
-    private void Awake()
-    {
-        moveAction = InputSystem.actions.FindAction("Move");
-        jumpAction = InputSystem.actions.FindAction("Jump");
-
-        rigidBody = GetComponent<Rigidbody2D>();
-        animator = GetComponent<SpriteRenderer>();
+        moveDirection = moveAction.action.ReadValue<Vector2>();
     }
 
     private void FixedUpdate()
     {
-        moveInput = moveAction.ReadValue<Vector2>();
-
-        if (jumpAction.WasPressedThisFrame())
-        {
-            Jump();
-        }
-
-        //rigidBody.MovePosition(transform.forward * moveInput.y * walkSpeed * Time.deltaTime + rigidBody.position);
+        rigidBody.linearVelocity = new Vector2(moveDirection.x * walkSpeed, rigidBody.linearVelocityY);
     }
 
-    private void Jump()
+    private void OnEnable()
     {
-        rigidBody.AddForceAtPosition(new Vector2(0, jumpHeight), Vector2.up, ForceMode2D.Impulse);
+        
+        jumpAction.action.started += Jump;
+    }
+
+    private void OnDisable()
+    {
+        jumpAction.action.started -= Jump;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        canJump = true;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        canJump = false;
+    }
+
+    private void Jump(InputAction.CallbackContext obj)
+    {
+        if (canJump)
+        {
+            rigidBody.linearVelocity = Vector2.up * jumpHeight;
+        }
     }
 }
