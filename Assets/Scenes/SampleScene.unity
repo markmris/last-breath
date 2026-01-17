@@ -530,15 +530,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 59ca90cba51e8264889f13d46d19eb8b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 59ca90cba51e8264889f13d46d19eb8b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 59ca90cba51e8264889f13d46d19eb8b, type: 3}
       propertyPath: m_LocalScale.z
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 59ca90cba51e8264889f13d46d19eb8b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -546,7 +546,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 59ca90cba51e8264889f13d46d19eb8b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 59ca90cba51e8264889f13d46d19eb8b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -599,6 +599,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 59ca90cba51e8264889f13d46d19eb8b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1881514012}
+    - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 59ca90cba51e8264889f13d46d19eb8b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1881514016}
   m_SourcePrefab: {fileID: -8435245712485981826, guid: 59ca90cba51e8264889f13d46d19eb8b, type: 3}
 --- !u!1 &1881514006 stripped
 GameObject:
@@ -643,8 +646,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 0.14, y: 0.16}
-    newSize: {x: 0.14, y: 0.16}
+    oldSize: {x: 0.875, y: 1}
+    newSize: {x: 0.875, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -666,7 +669,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 5
+  m_GravityScale: 7
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -727,13 +730,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   rigidBody: {fileID: 1881514010}
-  walkSpeed: 10
+  animator: {fileID: 1881514016}
+  walkSpeed: 6
+  jumpHeight: 20
   moveAction: {fileID: -3721397203859753266, guid: 2feb7e2300889dd409430bc9a9931f28, type: 3}
+  jumpAction: {fileID: 480219049891908537, guid: 2feb7e2300889dd409430bc9a9931f28, type: 3}
+  attackAction: {fileID: -3988822639871499078, guid: 2feb7e2300889dd409430bc9a9931f28, type: 3}
 --- !u!4 &1881514014 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7878350319992209165, guid: 59ca90cba51e8264889f13d46d19eb8b, type: 3}
   m_PrefabInstance: {fileID: 1663327930}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1881514016
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881514006}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bf226ccf8b84b61459128b7089e12531, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
