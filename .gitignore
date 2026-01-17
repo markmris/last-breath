@@ -104,4 +104,8 @@ InitTestScene*.unity*
 
 # --- Editor configs ---
 .vscode/
+<<<<<<< HEAD
 *.slnx
+=======
+
+>>>>>>> 4c10a877b5d75ee9cfb41b7ebb295db4cfc91cb8
