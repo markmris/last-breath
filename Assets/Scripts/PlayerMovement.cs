@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     {
         moveDirection = moveAction.action.ReadValue<Vector2>();
 
-        if (Time.timeAsDouble - standStillTime > regenTime && stamina < 7)
+        if (Time.timeAsDouble - standStillTime > regenTime && stamina < 5)
         {
             inGameUIControl.AddStamina(stamina);
             stamina++;
