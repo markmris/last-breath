@@ -1,10 +1,11 @@
-using System;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem; 
 
 public class PlayerMovement : MonoBehaviour
 {
+    public InGameUIControl inGameUIControl;
+
     public Rigidbody2D rigidBody;
     public Animator animator;
     public float walkSpeed;
@@ -19,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     private bool grounded = false;
 
     public float regenTime;
-    private int stamina = 7;
+    private int stamina = 5;
     private double standStillTime = 0f;
 
     public void Update()
@@ -28,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Time.timeAsDouble - standStillTime > regenTime && stamina < 7)
         {
+            inGameUIControl.AddStamina(stamina);
             stamina++;
             standStillTime = Time.timeAsDouble;
         }
@@ -94,6 +96,7 @@ public class PlayerMovement : MonoBehaviour
         rigidBody.linearVelocityX = 0;
         animator.SetTrigger("Attack");
         stamina--;
+        inGameUIControl.ReduceStamina(stamina);
         standStillTime = Time.timeAsDouble;
     }
 
