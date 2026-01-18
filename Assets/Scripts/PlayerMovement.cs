@@ -1,3 +1,5 @@
+using System;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem; 
 
@@ -16,13 +18,24 @@ public class PlayerMovement : MonoBehaviour
     private bool attacking = false;
     private bool grounded = false;
 
+    public float regenTime;
+    private int stamina = 7;
+    private double standStillTime = 0f;
+
     public void Update()
     {
         moveDirection = moveAction.action.ReadValue<Vector2>();
 
+        if (Time.timeAsDouble - standStillTime > regenTime && stamina < 7)
+        {
+            stamina++;
+            standStillTime = Time.timeAsDouble;
+        }
+
         if (moveDirection.x != 0 && !attacking && grounded)
         {
             animator.SetBool("Running", true);
+            standStillTime = Time.timeAsDouble;
         }
         else
         {
@@ -74,13 +87,19 @@ public class PlayerMovement : MonoBehaviour
 
     private void Attack(InputAction.CallbackContext obj)
     {
+        if (!grounded | stamina == 0 | attacking) {return;}
+
         Debug.Log("ATTACK INPUT");
         attacking = true;
+        rigidBody.linearVelocityX = 0;
         animator.SetTrigger("Attack");
+        stamina--;
+        standStillTime = Time.timeAsDouble;
     }
 
     public void OnAttackFinished()
     {
+        Thread.Sleep(100);
         attacking = false;
         Debug.Log("FINISHED ATTACK");
     }
