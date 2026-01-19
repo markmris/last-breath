@@ -6,6 +6,9 @@ public class PlayerMovement : MonoBehaviour
 {
     public InGameUIControl inGameUIControl;
 
+    public Transform groundCheck;
+    public Vector2 groundCheckSize;
+    public LayerMask groundLayer;
     public Rigidbody2D rigidBody;
     public Animator animator;
     public float walkSpeed;
@@ -14,8 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public InputActionReference jumpAction;
     public InputActionReference attackAction;
     private Vector2 moveDirection;
-
-    private bool canJump;
+    
     private bool attacking = false;
     private bool grounded = false;
 
@@ -26,6 +28,12 @@ public class PlayerMovement : MonoBehaviour
     public void Update()
     {
         moveDirection = moveAction.action.ReadValue<Vector2>();
+        grounded = Physics2D.OverlapBox(groundCheck.position, groundCheckSize, 0f, groundLayer);
+        
+        if (animator.GetBool("Grounded") != grounded)
+        {
+            animator.SetBool("Grounded", grounded);
+        }
 
         if (Time.timeAsDouble - standStillTime > regenTime && stamina < 5)
         {
@@ -41,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            animator.SetBool("Running", false);
+            animator. SetBool("Running", false);
         }
     }
 
@@ -65,23 +73,9 @@ public class PlayerMovement : MonoBehaviour
         attackAction.action.started -= Attack;
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
-    {
-        canJump = true;
-        grounded = true;
-        animator.SetBool("Grounded", true);
-    }
-
-    public void OnCollisionExit2D(Collision2D collision)
-    {
-        canJump = false;
-        grounded = false;
-        animator.SetBool("Grounded", false);
-    }
-
     private void Jump(InputAction.CallbackContext obj)
     {
-        if (canJump)
+        if (grounded)
         {
             rigidBody.linearVelocity = Vector2.up * jumpHeight;
         }

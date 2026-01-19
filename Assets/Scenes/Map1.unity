@@ -595,6 +595,11 @@ RectTransform:
   m_AnchoredPosition: {x: -200, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!4 &1062657378 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2863233886847592147, guid: 175800288f234a845acb6a1ab12dec70, type: 3}
+  m_PrefabInstance: {fileID: 4863882116920953550}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1089486583
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,7 +610,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1089486585}
   - component: {fileID: 1089486584}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Barrier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -754,7 +759,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &1138800382
 RectTransform:
@@ -1030,7 +1035,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1659924159}
   - component: {fileID: 1659924158}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Barrier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1234,7 +1239,7 @@ GameObject:
   - component: {fileID: 1845541869}
   m_Layer: 0
   m_Name: Tilemap
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5183,6 +5188,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2863233886847592147, guid: 175800288f234a845acb6a1ab12dec70, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2863233886847592147, guid: 175800288f234a845acb6a1ab12dec70, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.075
+      objectReference: {fileID: 0}
+    - target: {fileID: 2863233886847592147, guid: 175800288f234a845acb6a1ab12dec70, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.069
+      objectReference: {fileID: 0}
     - target: {fileID: 4020127156122327061, guid: 175800288f234a845acb6a1ab12dec70, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5228,9 +5245,17 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7813655628116058730, guid: 175800288f234a845acb6a1ab12dec70, type: 3}
+      propertyPath: groundCheck
+      value: 
+      objectReference: {fileID: 1062657378}
+    - target: {fileID: 7813655628116058730, guid: 175800288f234a845acb6a1ab12dec70, type: 3}
       propertyPath: inGameUIControl
       value: 
       objectReference: {fileID: 1138800383}
+    - target: {fileID: 7813655628116058730, guid: 175800288f234a845acb6a1ab12dec70, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
