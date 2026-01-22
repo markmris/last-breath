@@ -12,6 +12,7 @@ public class ZombieController : MonoBehaviour
     private int zombiesToSpawn;
     public int waveCounter = 1;
     private int zombieCount;
+    private int padding = 200;
     private Camera cam;
 
     System.Random rand = new System.Random();
@@ -38,13 +39,16 @@ public class ZombieController : MonoBehaviour
             
             for (int i = 0; i < zombiesToSpawn; i++)
             {
-                yield return new WaitForSeconds(rand.Next(1, 7));
+                yield return new WaitForSeconds(rand.Next(1, 6));
 
                 RefreshSpawnList();
 
                 int spawnPoint = rand.Next(1, validSpawnPoints.Count);
-                Instantiate(zombiePrefab, validSpawnPoints[spawnPoint].transform);
+                GameObject zombie = Instantiate(zombiePrefab, validSpawnPoints[spawnPoint]);
+                zombie.transform.parent = null;
             }
+
+            yield return new WaitUntil(() => zombieCount == 0);
         }
     }
 
@@ -56,7 +60,7 @@ public class ZombieController : MonoBehaviour
         {
             Vector2 spawnPosition = cam.WorldToScreenPoint(spawnPoint.transform.position);
 
-            if (spawnPosition.x < 0 || spawnPosition.x > cam.pixelWidth)
+            if (spawnPosition.x < 0 - padding|| spawnPosition.x > cam.pixelWidth + padding)
             {
                 validSpawnPoints.Add(spawnPoint.transform);
                 Debug.Log("ADDED VALID SPAWNPOINT AT: " + Convert.ToString(spawnPoint.transform.position));
