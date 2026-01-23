@@ -68,4 +68,8 @@ https://billnyethescientist.itch.io/last-breath
 4. Open the "Map" scene.
 
 5. Click the Play button at the top to run the game.
+<<<<<<< HEAD
    
+=======
+   
+>>>>>>> a675bb5 (Fixed issue with README. Final push for health system without game over event.)
