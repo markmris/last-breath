@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     public float regenTime;
     private int stamina = 5;
     private double standStillTime = 0f;
+    public float health = 100f;
 
     public void Update()
     {

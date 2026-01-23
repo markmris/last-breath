@@ -239,5 +239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZombiePathfinding
   player: {fileID: 0}
+  playerController: {fileID: 0}
   walkSpeed: 4.5
   reach: 0.2
+  debounceTime: 1.3
