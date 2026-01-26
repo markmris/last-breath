@@ -17,6 +17,8 @@ public class ZombieController : MonoBehaviour
 
     System.Random rand = new System.Random();
 
+    public InGameUIControl inGameUIControl;
+
     public void Start()
     {
         spawnFolder = new GameObject[transform.childCount];
@@ -34,7 +36,7 @@ public class ZombieController : MonoBehaviour
     {
         while (true)
         {
-            zombiesToSpawn = waveCounter * 7;
+            zombiesToSpawn = waveCounter * 4;
             zombieCount = zombiesToSpawn;
             
             for (int i = 0; i < zombiesToSpawn; i++)
@@ -50,6 +52,9 @@ public class ZombieController : MonoBehaviour
 
             yield return new WaitUntil(() => zombieCount == 0);
             yield return new WaitForSeconds(4);
+
+            waveCounter++;
+            inGameUIControl.ChangeWave(waveCounter);
         }
     }
 

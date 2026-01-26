@@ -1,10 +1,12 @@
 using System;
 using UnityEngine.UI;
 using UnityEngine;
+using TMPro;
 
 public class InGameUIControl : MonoBehaviour
 {
     public PlayerMovement playerMovement;
+    public TextMeshProUGUI waveCounter;
     public Image meter;
     public Image[] staminaIcons = new Image[5];
 
@@ -26,5 +28,10 @@ public class InGameUIControl : MonoBehaviour
     {
         meter.fillAmount = Math.Clamp(health, 0, 100) / 100;
         Debug.Log("HEALTH METER CHANGED");
+    }
+
+    public void ChangeWave(int wave)
+    {
+        waveCounter.text = "Wave: " + Convert.ToString(wave);
     }
 }
