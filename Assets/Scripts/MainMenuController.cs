@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
+    public AudioSource sfxPlayer;
     public LayerMask barrierLayer;
     public Rigidbody2D player;
     public Rigidbody2D zombie;
@@ -14,6 +15,7 @@ public class MainMenuController : MonoBehaviour
 
     public void OnStartClicked()
     {
+        sfxPlayer.Play();
         SceneManager.LoadScene("Map");
     }
 

@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     public InGameUIControl inGameUIControl;
-
+    public GameOver gameOver;
     public GameObject attackOrb;
     private SpriteRenderer newOrb;
     public Rigidbody2D rigidBody;
@@ -17,8 +17,11 @@ public class PlayerMovement : MonoBehaviour
     public InputActionReference attackAction;
     private Vector2 moveDirection;
 
+    public SoundManager soundManager;
+    public AudioClip attack;
+
     public bool attacking = false;
-    private bool grounded = false;
+    public bool grounded = false;
 
     public float regenTime;
     private int stamina = 5;
@@ -27,6 +30,12 @@ public class PlayerMovement : MonoBehaviour
 
     public void Update()
     {
+        if (health <= 0)
+        {
+            gameOver.ResetGame();
+            Destroy(this);
+        }
+
         moveDirection = moveAction.action.ReadValue<Vector2>();
 
         if (Time.timeAsDouble - standStillTime > regenTime && stamina < 5)
@@ -87,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump(InputAction.CallbackContext obj)
     {
-        if (grounded)
+        if (grounded && !attacking)
         {
             rigidBody.linearVelocity = Vector2.up * jumpHeight;
         }
@@ -111,13 +120,13 @@ public class PlayerMovement : MonoBehaviour
         newColor.a = .45f;
         newOrb.color = newColor;
         newOrb.transform.position = new Vector2(newOrb.transform.position.x, newOrb.transform.position.y - .75f);
+        soundManager.PlaySFX(attack);
     }
 
     public void OnAttackFinished()
     {
-        Thread.Sleep(100);
         attacking = false;
         Debug.Log("FINISHED ATTACK");
-        Destroy(newOrb);
+        Destroy(newOrb.gameObject);
     }
 }

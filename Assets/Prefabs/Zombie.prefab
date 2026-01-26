@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -1861911645446238262}
   m_Layer: 7
   m_Name: Zombie
-  m_TagString: Untagged
+  m_TagString: Zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81,8 +81,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1083595389
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -3733320737378430009, guid: 95843ea9c09901240a11f09b8414bd59, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -240,6 +240,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ZombiePathfinding
   player: {fileID: 0}
   playerController: {fileID: 0}
+  healthBarManager: {fileID: 0}
+  zombieController: {fileID: 0}
+  soundManager: {fileID: 0}
+  deathSound: {fileID: 8300000, guid: bd8857660a16ba549b8cc522d93d9117, type: 3}
   walkSpeed: 4.5
-  reach: 0.2
+  playerReach: 1
+  zombieReach: 0.2
   debounceTime: 1.3
+  zombieHealth: 1

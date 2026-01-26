@@ -10,13 +10,11 @@ public class ZombiePathfinding : MonoBehaviour
     public ZombieController zombieController;
     private Rigidbody2D rigidBody;
     public float walkSpeed;
-    public float playerReach = 1.2f;
+    private float playerReach = 1.2f;
     public float zombieReach = 0.2f;
     public float debounceTime;
     private int direction;
     private bool debounce = false;
-
-    public int zombieHealth = 1;
 
     void Start()
     {
@@ -34,13 +32,8 @@ public class ZombiePathfinding : MonoBehaviour
 
         if (distX < playerReach && distY < playerReach && playerController.attacking)
         {
-            zombieHealth--;
-            
-            if (zombieHealth <= 0) 
-            {
-                Destroy(gameObject);
-                zombieController.zombieCount--;
-            }
+            Destroy(gameObject);
+            zombieController.zombieCount--;
         }
 
         else if (distX < zombieReach && distY < zombieReach && !debounce)

@@ -7,6 +7,7 @@ public class InGameUIControl : MonoBehaviour
 {
     public PlayerMovement playerMovement;
     public TextMeshProUGUI waveCounter;
+    public TextMeshProUGUI gameOver;
     public Image meter;
     public Image[] staminaIcons = new Image[5];
 
@@ -33,5 +34,18 @@ public class InGameUIControl : MonoBehaviour
     public void ChangeWave(int wave)
     {
         waveCounter.text = "Wave: " + Convert.ToString(wave);
+    }
+
+    public void GameOver()
+    {
+        foreach (Transform child in transform)
+        {
+            if (child.name != "GameOver")
+            {
+                Destroy(child.gameObject);
+            }
+        }
+
+        gameOver.enabled = true;
     }
 }

@@ -51,7 +51,7 @@ public class ZombieController : MonoBehaviour
             }
 
             yield return new WaitUntil(() => zombieCount == 0);
-            yield return new WaitForSeconds(4);
+            yield return new WaitForSeconds(5);
 
             waveCounter++;
             inGameUIControl.ChangeWave(waveCounter);
