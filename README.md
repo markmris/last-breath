@@ -2,7 +2,7 @@
 
 Fight them off. Don't get tired. Survive.
 
-This is a wave-based zombie survival game where you fight off zombies as long as you can. Attacking takes stamina, regenerate by standing still. Zombies get stronger every 10 waves.
+This is a wave-based zombie survival game where you fight off zombies as long as you can. Attacking takes stamina, regenerate by standing still.
 
 ## How to play
 
