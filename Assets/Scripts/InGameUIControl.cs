@@ -1,9 +1,11 @@
+using System;
 using UnityEngine.UI;
 using UnityEngine;
 
 public class InGameUIControl : MonoBehaviour
 {
     public PlayerMovement playerMovement;
+    public Image meter;
     public Image[] staminaIcons = new Image[5];
 
     public void ReduceStamina(int i)
@@ -20,4 +22,9 @@ public class InGameUIControl : MonoBehaviour
         staminaIcons[i].color = color;
     }
 
+    public void ChangeHealth(float health)
+    {
+        meter.fillAmount = Math.Clamp(health, 0, 100) / 100;
+        Debug.Log("HEALTH METER CHANGED");
+    }
 }

@@ -11,7 +11,7 @@ public class ZombieController : MonoBehaviour
     public GameObject zombiePrefab;
     private int zombiesToSpawn;
     public int waveCounter = 1;
-    private int zombieCount;
+    public int zombieCount;
     private int padding = 200;
     private Camera cam;
 
@@ -39,7 +39,7 @@ public class ZombieController : MonoBehaviour
             
             for (int i = 0; i < zombiesToSpawn; i++)
             {
-                yield return new WaitForSeconds(rand.Next(1, 6));
+                yield return new WaitForSeconds(rand.Next(0, 3));
 
                 RefreshSpawnList();
 
@@ -49,6 +49,7 @@ public class ZombieController : MonoBehaviour
             }
 
             yield return new WaitUntil(() => zombieCount == 0);
+            yield return new WaitForSeconds(4);
         }
     }
 

@@ -6,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     public InGameUIControl inGameUIControl;
 
+    public GameObject attackOrb;
+    private SpriteRenderer newOrb;
     public Rigidbody2D rigidBody;
     public Animator animator;
     public float walkSpeed;
@@ -15,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public InputActionReference attackAction;
     private Vector2 moveDirection;
 
-    private bool attacking = false;
+    public bool attacking = false;
     private bool grounded = false;
 
     public float regenTime;
@@ -102,6 +104,13 @@ public class PlayerMovement : MonoBehaviour
         stamina--;
         inGameUIControl.ReduceStamina(stamina);
         standStillTime = Time.timeAsDouble;
+
+        newOrb = Instantiate(attackOrb, transform).GetComponent<SpriteRenderer>();
+        newOrb.sortingLayerName = "VFX";
+        Color newColor = newOrb.color;
+        newColor.a = .45f;
+        newOrb.color = newColor;
+        newOrb.transform.position = new Vector2(newOrb.transform.position.x, newOrb.transform.position.y - .75f);
     }
 
     public void OnAttackFinished()
@@ -109,5 +118,6 @@ public class PlayerMovement : MonoBehaviour
         Thread.Sleep(100);
         attacking = false;
         Debug.Log("FINISHED ATTACK");
+        Destroy(newOrb);
     }
 }
