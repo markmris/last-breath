@@ -2,11 +2,16 @@
 
 Fight them off. Don't get tired. Survive.
 
-This is a wave-based zombie survival game where you fight off zombies as long as you can. Attacking takes stamina, regenerate by standing still.
+This is a wave-based zombie survival game where you fight off zombies as long as you can. Attacking takes stamina, regenerate by standing still. When you're ready for a challenge, there are 4 game modifiers in the main menu:
+
+1. Slower Stamina Regen Time
+2. 1 HP
+3. Extra Zombies
+4. Reduced Movement
 
 ## How to play
 
-Use A/D or left and right arrows to move. W to jump, and Space to attack. You have 5 stamina points, and each attack takes away one. Stand still to regenerate stamina.
+Use A/D to move. W to jump, and Space to attack. You have 5 stamina points, and each attack takes away one. Stand still to regenerate stamina.
 
 ## Play the Game
 
