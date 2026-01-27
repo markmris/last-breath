@@ -115,7 +115,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!grounded | stamina == 0 | attacking) {return;}
 
-        Debug.Log("ATTACK INPUT");
         attacking = true;
         rigidBody.linearVelocityX = 0;
         animator.SetTrigger("Attack");
@@ -135,7 +134,6 @@ public class PlayerMovement : MonoBehaviour
     public void OnAttackFinished()
     {
         attacking = false;
-        Debug.Log("FINISHED ATTACK");
         Destroy(newOrb.gameObject);
     }
 }

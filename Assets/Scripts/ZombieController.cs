@@ -72,7 +72,6 @@ public class ZombieController : MonoBehaviour
             if (spawnPosition.x < 0 - padding|| spawnPosition.x > cam.pixelWidth + padding)
             {
                 validSpawnPoints.Add(spawnPoint.transform);
-                Debug.Log("ADDED VALID SPAWNPOINT AT: " + Convert.ToString(spawnPoint.transform.position));
             }
         }
     }
