@@ -36,7 +36,7 @@ public class ZombieController : MonoBehaviour
     {
         while (true)
         {
-            zombiesToSpawn = waveCounter * 4;
+            zombiesToSpawn = waveCounter * 3;
             zombieCount = zombiesToSpawn;
             
             for (int i = 0; i < zombiesToSpawn; i++)
@@ -51,7 +51,7 @@ public class ZombieController : MonoBehaviour
             }
 
             yield return new WaitUntil(() => zombieCount == 0);
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(4);
 
             waveCounter++;
             inGameUIControl.ChangeWave(waveCounter);
