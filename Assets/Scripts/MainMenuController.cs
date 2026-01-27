@@ -9,12 +9,15 @@ public class MainMenuController : MonoBehaviour
     public LayerMask barrierLayer;
     public Rigidbody2D player;
     public Rigidbody2D zombie;
+    public GameObject mods;
     public float walkSpeed;
     public int playerDirection = -1;
     public int zombieDirection = 1;
 
     public void OnStartClicked()
     {
+        mods.transform.SetParent(null, true);
+        DontDestroyOnLoad(mods);
         sfxPlayer.Play();
         SceneManager.LoadScene("Map");
     }

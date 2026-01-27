@@ -58,13 +58,9 @@ public class GameOver : MonoBehaviour
     IEnumerator WaitBeforeReset()
     {
         yield return new WaitForSeconds(1.5f);
-        Debug.LogWarning("WAITED 1.5 SECONDS");
         inGameUIControl.GameOver();
-        Debug.LogWarning("FIRED GAMEOVER FUNCTION");
         yield return new WaitForSeconds(3);
-        Debug.LogWarning("WAITED 3 SECONDS");
         SceneManager.LoadScene("MainMenu");
-        Debug.LogWarning("LOADED MAIN MENU");
         yield break;
     }
 }

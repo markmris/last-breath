@@ -1708,6 +1708,7 @@ MonoBehaviour:
     m_Bits: 8
   player: {fileID: 6553437531553503931}
   zombie: {fileID: 6405552520869452474}
+  mods: {fileID: 1161262063}
   walkSpeed: 4
   playerDirection: -1
   zombieDirection: 1

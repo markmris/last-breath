@@ -8,7 +8,7 @@ public class ToggleColorControl : MonoBehaviour
     public Color enabledColor = Color.green;
     public Color disabledColor = Color.red;
 
-    void Start()
+    void Awake()
     {
         toggle = gameObject.GetComponent<Toggle>();
         UpdateColor(toggle.isOn);

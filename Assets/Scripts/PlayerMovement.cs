@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public InGameModControl inGameModControl;
     public InGameUIControl inGameUIControl;
     public GameOver gameOver;
     public GameObject attackOrb;
@@ -26,7 +27,15 @@ public class PlayerMovement : MonoBehaviour
     public float regenTime;
     private int stamina = 5;
     private double standStillTime = 0f;
-    public float health = 100f;
+    public float health;
+
+    void Start()
+    {
+        health = inGameModControl.mods["HPMod"] ? 1f : 100f;
+        walkSpeed = inGameModControl.mods["MovementMod"] ? 4 : 6f;
+        jumpHeight = inGameModControl.mods["MovementMod"] ? 15 : 22;
+        regenTime = inGameModControl.mods["RegenMod"] ? 2 : 1;
+    }
 
     public void Update()
     {

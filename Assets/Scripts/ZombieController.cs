@@ -10,6 +10,7 @@ public class ZombieController : MonoBehaviour
 
     public GameObject zombiePrefab;
     private int zombiesToSpawn;
+    private int zombieIncrement;
     public int waveCounter = 1;
     public int zombieCount;
     private int padding = 200;
@@ -18,9 +19,11 @@ public class ZombieController : MonoBehaviour
     System.Random rand = new System.Random();
 
     public InGameUIControl inGameUIControl;
+    public InGameModControl inGameModControl;
 
     public void Start()
     {
+        zombieIncrement = inGameModControl.mods["EnemiesMod"] ? 7 : 3;
         spawnFolder = new GameObject[transform.childCount];
         cam = Camera.main;
 
@@ -36,7 +39,7 @@ public class ZombieController : MonoBehaviour
     {
         while (true)
         {
-            zombiesToSpawn = waveCounter * 3;
+            zombiesToSpawn = waveCounter * zombieIncrement;
             zombieCount = zombiesToSpawn;
             
             for (int i = 0; i < zombiesToSpawn; i++)
